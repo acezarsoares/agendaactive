@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginProvider } from '../../providers/loginProvider/loginprovider';
+import { LoginProvider } from '../../providers/loginprovider/loginprovider';
 
 export class Usuario{
   operador: String;
