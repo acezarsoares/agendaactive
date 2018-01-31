@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
  
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginProvider } from '../providers/login/login';
+import { LoginProvider } from '../providers/loginprovider/loginprovider';
 
 
 @NgModule({
