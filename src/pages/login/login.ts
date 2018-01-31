@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from './../../providers/loginProvider/loginprovider';
 
 export class Usuario{
+  escola:string;
   operador: String;
   senha: String;
 }
