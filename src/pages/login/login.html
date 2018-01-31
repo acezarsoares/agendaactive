@@ -1,27 +1,27 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  <img src='./assets/imgs/logo.png' />
+  <p> <img src='./assets/imgs/logo.png' /> </p>
+
   <ion-list>
 
     <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked>Escola(codigo)</ion-label>
+      <ion-input type="text" [(ngModel)]="user.escola"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Operador</ion-label>
+      <ion-input type="text" [(ngModel)]="user.operador"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="user.senha"></ion-input>
     </ion-item>
-  
+
   </ion-list>
 
-  <p>
-    <button ion-button (click)="login()">Logar</button>
-  </p>
+  <button ion-button (click)="login()" full>Logar</button>
+  <br>
+  <button ion-button block > Esqueceu seu e-mail?</button>
 
 </ion-content>
