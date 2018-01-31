@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginProvider } from '../../providers/loginProvider/loginprovider';
 
 export class Usuario{
   operador: String;
@@ -14,15 +15,17 @@ export class Usuario{
 export class LoginPage {
   user: Usuario;
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams) {
+              public navCtrl: NavController,
+              public navParams: NavParams ,
+            public plog:LoginProvider) {          
     this.user = new Usuario();
   }
 
   ionViewDidLoad() {
   }
 
+
   login(){
-    // vai no provider verificar a autenticação
+    this.plog.showAlert("teste",'teste');
   }
 }

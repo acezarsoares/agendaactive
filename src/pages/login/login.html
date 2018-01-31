@@ -5,19 +5,23 @@
 </ion-header>
 
 <ion-content padding>
+  
   <ion-list>
 
     <ion-item>
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" name="operador" [(ngModel)]="user.operador"></ion-input>
+      <ion-label stacked>Username</ion-label>
+      <ion-input type="text"></ion-input>
     </ion-item>
-
+  
     <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password" name="senha" [(ngModel)]="user.senha"></ion-input>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password"></ion-input>
     </ion-item>
-
-    <button ion-button (click)="login()">Logar</button>
-
+  
   </ion-list>
+
+  <p>
+    <button ion-button (click)="login()">Logar</button>
+  </p>
+
 </ion-content>
