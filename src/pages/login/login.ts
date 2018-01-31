@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginProvider } from '../../providers/loginProvider/loginprovider';
+
+import { LoginProvider } from './../../providers/loginProvider/loginprovider';
 
 export class Usuario{
   operador: String;
@@ -16,8 +17,8 @@ export class LoginPage {
   user: Usuario;
   constructor(
               public navCtrl: NavController,
-              public navParams: NavParams ,
-            public plog:LoginProvider) {          
+              public navParams: NavParams,
+              private LoginProvider:LoginProvider) {          
     this.user = new Usuario();
   }
 
@@ -26,6 +27,6 @@ export class LoginPage {
 
 
   login(){
-    this.plog.showAlert("teste",'teste');
+    this.LoginProvider.showAlert('Login', 'Acesso ao sistema garantido');
   }
 }
