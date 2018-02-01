@@ -13,7 +13,7 @@ export class HomePage {
   }
 
   public LogOut(){
-    this.navCtrl.push(LoginPage);
+   
   }
 
 }
