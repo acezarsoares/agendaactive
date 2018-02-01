@@ -12,6 +12,14 @@ export class LoginProvider {
   }
 
 
+  public ValidaLogin(user){
+    if(user.operador == 'admin' || user.senha=='123'){
+      return true
+     } else {
+      return false
+     }
+  }
+
   showAlert(Titulo, Mensagem) {
     let alert = this.alertCtrl.create({
       title: Titulo,

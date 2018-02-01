@@ -29,11 +29,12 @@ export class LoginPage {
 
 
   login(){
-    if(this.user.operador == 'admin' || this.user.senha=='123'){
-      this.LoginProvider.showAlert('Login', 'Acesso ao sistema garantido');
-      this.navCtrl.push('TabsPage');
+    
+    if(this.LoginProvider.ValidaLogin(this.user)){
+      this.navCtrl.push(TabsPage);
      } else {
       this.LoginProvider.showAlert('Login', 'Acesso negado!');
-     }
-  }
+     }    
+}
+
 }
