@@ -1,4 +1,4 @@
-unit WebModuleUnit1;
+unit WebModuleUnit;
 
 interface
 
