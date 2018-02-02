@@ -50,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses ServerMethodsUnit1, ServerContainerUnit1, Web.WebReq;
+uses ServerMethodsUnit, ServerContainerUnit, Web.WebReq;
 
 procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
   const TagString: string; TagParams: TStrings; var ReplaceText: string);
@@ -62,7 +62,7 @@ begin
   else if SameText(TagString, 'host') then
     ReplaceText := string(Request.Host)
   else if SameText(TagString, 'classname') then
-    ReplaceText := ServerMethodsUnit1.TServerMethods1.ClassName
+    ReplaceText := ServerMethodsUnit.TAgendaEscolar.ClassName
   else if SameText(TagString, 'loginrequired') then
     if DSHTTPWebDispatcher1.AuthenticationManager <> nil then
       ReplaceText := 'true'

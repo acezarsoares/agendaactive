@@ -38,7 +38,7 @@ implementation
 {$R *.dfm}
 
 uses
-  ServerMethodsUnit1;
+  ServerMethodsUnit;
 
 var
   FModule: TComponent;
@@ -72,7 +72,7 @@ end;
 procedure TServerContainer1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
-  PersistentClass := ServerMethodsUnit1.TServerMethods1;
+  PersistentClass := ServerMethodsUnit.TAgendaEscolar;
 end;
 
 procedure TServerContainer1.DSAuthenticationManager1UserAuthenticate(

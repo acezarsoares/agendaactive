@@ -1,4 +1,4 @@
-object ServerMethods1: TServerMethods1
+object AgendaEscolar: TAgendaEscolar
   OldCreateOrder = False
   Height = 150
   Width = 215

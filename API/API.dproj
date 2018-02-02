@@ -90,17 +90,17 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ServerMethodsUnit1.pas">
-            <Form>ServerMethods1</Form>
+        <DCCReference Include="server\ServerMethodsUnit.pas">
+            <Form>AgendaEscolar</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDSServerModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="ServerContainerUnit1.pas">
+        <DCCReference Include="server\ServerContainerUnit.pas">
             <Form>ServerContainer1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="WebModuleUnit1.pas">
+        <DCCReference Include="server\WebModuleUnit.pas">
             <Form>WebModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TWebModule</DesignClass>
