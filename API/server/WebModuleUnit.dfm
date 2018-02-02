@@ -19,25 +19,25 @@ object WebModule1: TWebModule1
       OnAction = WebModuleDefaultAction
     end>
   BeforeDispatch = WebModuleBeforeDispatch
-  Height = 333
-  Width = 414
+  Height = 279
+  Width = 365
   object DSHTTPWebDispatcher1: TDSHTTPWebDispatcher
     Filters = <>
     WebDispatch.PathInfo = 'datasnap*'
-    Left = 96
-    Top = 75
+    Left = 64
+    Top = 35
   end
   object ServerFunctionInvoker: TPageProducer
     HTMLFile = 'templates/serverfunctioninvoker.html'
     OnHTMLTag = ServerFunctionInvokerHTMLTag
-    Left = 56
-    Top = 184
+    Left = 64
+    Top = 136
   end
   object ReverseString: TPageProducer
     HTMLFile = 'templates/reversestring.html'
     OnHTMLTag = ServerFunctionInvokerHTMLTag
-    Left = 168
-    Top = 184
+    Left = 176
+    Top = 136
   end
   object WebFileDispatcher1: TWebFileDispatcher
     WebFileExtensions = <
@@ -76,23 +76,23 @@ object WebModule1: TWebModule1
         DirectoryMask = '\templates\*'
       end>
     RootDirectory = '.'
-    Left = 56
-    Top = 136
+    Left = 64
+    Top = 88
   end
   object DSProxyGenerator1: TDSProxyGenerator
     ExcludeClasses = 'DSMetadata'
     MetaDataProvider = DSServerMetaDataProvider1
     Writer = 'Java Script REST'
-    Left = 48
-    Top = 248
+    Left = 56
+    Top = 200
   end
   object DSServerMetaDataProvider1: TDSServerMetaDataProvider
-    Left = 208
-    Top = 248
+    Left = 216
+    Top = 200
   end
   object DSProxyDispatcher1: TDSProxyDispatcher
     DSProxyGenerator = DSProxyGenerator1
-    Left = 264
-    Top = 128
+    Left = 272
+    Top = 80
   end
 end
