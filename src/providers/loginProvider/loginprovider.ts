@@ -1,31 +1,19 @@
-//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import{ Http, Response } from '@angular/http';
 
+import 'rxjs/add/operator/map';
 
-import { AlertController } from 'ionic-angular';
 
 @Injectable()
 export class LoginProvider {
 
-  constructor(public alertCtrl: AlertController) {
-              // nada
+  private API_URL:string = 'http://localhost/API/api.dll/datasnap/rest/TServerMethods/'; 
+
+  constructor(public http: Http) {             
   }
 
-
-  public ValidaLogin(user){
-    if(user.operador == 'admin' || user.senha=='123'){
-      return true
-     } else {
-      return false
-     }
+  ValidaLogin(user){
+    
   }
 
-  showAlert(Titulo, Mensagem) {
-    let alert = this.alertCtrl.create({
-      title: Titulo,
-      subTitle: Mensagem,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 }

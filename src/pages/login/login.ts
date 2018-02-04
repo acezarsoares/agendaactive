@@ -20,7 +20,7 @@ export class LoginPage {
   constructor(
               public navCtrl: NavController,
               public navParams: NavParams,
-              private LoginProvider:LoginProvider) {          
+              private loginProvider:LoginProvider) {          
     this.user = new Usuario();
   }
 
@@ -29,12 +29,7 @@ export class LoginPage {
 
 
   login(){
-    
-    if(this.LoginProvider.ValidaLogin(this.user)){
-      this.navCtrl.push(TabsPage);
-     } else {
-      this.LoginProvider.showAlert('Login', 'Acesso negado!');
-     }    
-}
+    this.navCtrl.push(TabsPage)
+  }
 
 }
