@@ -1,0 +1,33 @@
+page-mensagem {
+        .user_name {
+                color: #000;
+                font-weight: bold;
+            }
+        .user_message{
+                color: #000;
+                font-weight: normal;
+        }
+        .message {
+                padding: 10px !important;
+                transition: all 250ms ease-in-out !important;
+                border-radius: 10px !important;
+                margin-bottom: 4px !important;
+        }
+        .my_message {
+                background: color($colors, primary) !important;
+                color: #000 !important;
+        }
+        .other_message {
+                background: #dcdcdc !important;
+                color: #000 !important;
+        }
+        .time { 
+                color: #000;;
+                float: right;
+                font-size: small;
+        }
+        .message_row {
+                background-color: #fff;
+        }
+        
+}

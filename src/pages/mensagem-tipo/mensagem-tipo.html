@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mensagens</ion-title>    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-note item-start>
+      Você tem reclamações, dúvidas ou sugestões?<br/>
+      Fale diretamente com a instituição, através de um dos links abaixo.
+    </ion-note>  
+
+    <ion-list>
+      <button ion-item *ngFor="let item of mensagemtipo" (click)="mensagemDetalhe(item.idMobileTipoMensagem, item.nomeMobileTipoMensagem)">        
+        {{item.nomeMobileTipoMensagem}}
+        <ion-fab bottom right>
+          <button ion-fab mini *ngIf="(item.qtdeNAOLida >= 1)" >{{item.qtdeNAOLida}}</button>
+        </ion-fab>                      
+      </button>        
+    </ion-list>  
+    
+    <ion-card color=primary>
+        <ion-card-content>
+          As mensagens serão lidas pela Escola em até 72 horas. Para assuntos urgentes por favor entre em contato por telefone.
+        </ion-card-content>
+      
+      </ion-card>
+</ion-content>

@@ -1,0 +1,52 @@
+<!--
+  Generated template for the MensagemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{this.nomemobiletipomensagem}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row *ngFor="let message of mensagem">
+          
+          <ion-col col-9 *ngIf="message.tipoAutor === 'U'" class="message" [ngClass]="{'my_message': message.tipoAutor !== 'U', 'other_message': message.tipoAutor === 'U'}">
+            <span class="user_name">{{ message.nomeAutor }}:</span><br>
+            <span class="user_message">{{ message.mensagem }}</span>
+            <div class="time">{{message.dataHora | date:'dd.MM hh:MM'}}</div>
+          </ion-col>
+     
+          <ion-col offset-3 col-9 *ngIf="message.tipoAutor !== 'U'" class="message" [ngClass]="{'my_message': message.tipoAutor !== 'U', 'other_message': message.tipoAutor === 'U'}">
+            <span class="user_name">{{ message.nomeAutor }}:</span><br>
+            <span class="user_message">{{ message.mensagem }}</span>
+            <div class="time">{{message.dataHora | date:'dd.MM hh:MM'}}</div>
+          </ion-col>
+     
+        </ion-row>
+      </ion-grid>
+     
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-row class="message_row">
+        <ion-col col-9>
+          <ion-item no-lines>
+            <ion-input type="text" placeholder="Mensagem" [(ngModel)]="message"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button clear color="primary" (click)="enviarMessage()" [disabled]="message === ''">
+          Enviar
+        </button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>

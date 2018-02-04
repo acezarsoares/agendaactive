@@ -14,6 +14,7 @@ type
     FNomeAutor: String;
     FDataHoraString: String;
     FDataHora: TDateTime;
+    FNomeMobileTipoMensagem: String;
 
     procedure SetIdMensagem(const Value: Integer);
     procedure SetMensagem(const Value: String);
@@ -21,10 +22,12 @@ type
     procedure SetNomeAutor(const Value: String);
     procedure SetDataHora(const Value: TDateTime);
     procedure SetDataHoraString(const Value: String);
+    procedure SetNomeMobileTipoMensagem(const Value: String);
   public
     function Obter(Id, IdTipoMensagem: Integer): TJSONArray; // Get
 
     property IdMensagem :Integer read FIdMensagem write SetIdMensagem;
+    property NomeMobileTipoMensagem: String read FNomeMobileTipoMensagem write SetNomeMobileTipoMensagem;
     property TipoAutor :String read FTipoAutor write SetTipoAutor;
     property NomeAutor :String read FNomeAutor write SetNomeAutor;
     property DataHoraString :String read FDataHoraString write SetDataHoraString;
@@ -79,6 +82,11 @@ end;
 procedure TMensagemModel.SetNomeAutor(const Value: String);
 begin
   FNomeAutor := Value;
+end;
+
+procedure TMensagemModel.SetNomeMobileTipoMensagem(const Value: String);
+begin
+  FNomeMobileTipoMensagem := Value;
 end;
 
 procedure TMensagemModel.SetTipoAutor(const Value: String);

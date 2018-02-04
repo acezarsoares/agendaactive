@@ -30,6 +30,7 @@ begin
   Lista := TObjectList<TMensagemModel>.Create;
   try
     Qry.SQL.Text := 'SELECT	IdMobileMensagem,  ' +
+                    '       NomeMobileTipoMensagem, ' +
                     '       TipoAutor, ' +
                     '       NomeAutor, ' +
                     '       DataHoraString = CONVERT( VARCHAR, DataHora, 103 ) + '' '' + CONVERT( VARCHAR, DataHora, 108 ), ' +
@@ -48,12 +49,13 @@ begin
     while Not Qry.Eof do
     begin
       MensagemModel := TMensagemModel.Create;
-      MensagemModel.IdMensagem      := Qry.FieldByName('IdMobileMensagem').AsInteger;
-      MensagemModel.TipoAutor       := Qry.FieldByName('TipoAutor').AsString;
-      MensagemModel.NomeAutor       := Qry.FieldByName('NomeAutor').AsString;
-      MensagemModel.DataHoraString  := Qry.FieldByName('DataHoraString').AsString;
-      MensagemModel.DataHora        := Qry.FieldByName('DataHora').AsDateTime;
-      MensagemModel.Mensagem        := Qry.FieldByName('Mensagem').AsString;
+      MensagemModel.IdMensagem              := Qry.FieldByName('IdMobileMensagem').AsInteger;
+      MensagemModel.NomeMobileTipoMensagem  := Qry.FieldByName('NomeMobileTipoMensagem').AsString;
+      MensagemModel.TipoAutor               := Qry.FieldByName('TipoAutor').AsString;
+      MensagemModel.NomeAutor               := Qry.FieldByName('NomeAutor').AsString;
+      MensagemModel.DataHoraString          := Qry.FieldByName('DataHoraString').AsString;
+      MensagemModel.DataHora                := Qry.FieldByName('DataHora').AsDateTime;
+      MensagemModel.Mensagem                := Qry.FieldByName('Mensagem').AsString;
 
       Lista.Add(MensagemModel);
 
