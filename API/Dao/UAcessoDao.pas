@@ -23,11 +23,11 @@ uses USistemaControl, PFuncoes;
 function TAcessoDao.Logar(Login, Senha: String): TObjectList<TAcessoModel>;
 var
   Qry    : TFDQuery;
-  Lista  : TObjectList<TAcessoModel>;
+  ListaAcesso  : TObjectList<TAcessoModel>;
   AcessoModel: TAcessoModel;
 begin
   Qry := TSistemaControl.GetInstance().Conexao.CriarQuery();
-  Lista := TObjectList<TAcessoModel>.Create;
+  ListaAcesso := TObjectList<TAcessoModel>.Create;
   try
     Qry.SQL.Text := 'SELECT * FROM ( ' +
                     'SELECT Id = IdAluno, ' +
@@ -41,7 +41,7 @@ begin
                     'SELECT Id = IdProfessor, ' +
                     '       Tipo = ''P'', ' +
                     '       Login = Login, ' +
-                    '       Senha = Senha, ' +                    
+                    '       Senha = Senha, ' +
                     '       Nome = NomeProfessor, ' +
                     '       Email = Email ' +
                     'FROM TbProfessor ' +
@@ -49,38 +49,38 @@ begin
                     'SELECT Id = IdResponsavel, ' +
                     '       Tipo = ''R'', ' +
                     '       Login = Login, ' +
-                    '       Senha = Senha, ' +                    
+                    '       Senha = Senha, ' +
                     '       Nome = NomeResponsavel, ' +
                     '       Email = Email ' +
                     'FROM TbResponsavel ' +
                     ' ) rst ' +
                     'WHERE Login = :Login';
-                    
+
     Qry.ParamByName('Login').Value := Login;
     Qry.Open;
 
     If Not Qry.Eof then
-    begin      
+    begin
       If ( Senha = Trim( DeCrypto( Qry.FieldByName('Senha').AsString, Qry.FieldByName('Id').AsString ) ) ) then
       begin
         Qry.First;
         while not Qry.Eof do
         begin
           AcessoModel       := TAcessoModel.Create;
-          AcessoModel.Id    := Qry.FieldByName('Id').AsInteger;  
-          AcessoModel.Tipo  := Qry.FieldByName('Tipo').AsString;                  
+          AcessoModel.Id    := Qry.FieldByName('Id').AsInteger;
+          AcessoModel.Tipo  := Qry.FieldByName('Tipo').AsString;
           AcessoModel.Login := Qry.FieldByName('Login').AsString;
           AcessoModel.Nome  := Qry.FieldByName('Nome').AsString;
           AcessoModel.Email := Qry.FieldByName('Email').AsString;
 
-          Lista.Add(AcessoModel);
+          ListaAcesso.Add(AcessoModel);
 
           Qry.Next;
         end;
-      end             
+      end
     end;
-    
-    Result := Lista;
+
+    Result := ListaAcesso;
   finally
     Qry.Free;
   end;

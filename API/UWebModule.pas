@@ -19,6 +19,9 @@ type
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
+    DSHTTPWebDispatcher2: TDSHTTPWebDispatcher;
+    DSServer2: TDSServer;
+    DSServerClass2: TDSServerClass;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     procedure WebModule1DefaultHandlerAction(Sender: TObject;
@@ -29,6 +32,8 @@ type
     procedure DSHTTPWebDispatcher1FormatResult(Sender: TObject;
       var ResultVal: TJSONValue; const Command: TDBXCommand;
       var Handled: Boolean);
+    procedure DSServerClass2GetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
   private
     { Private declarations }
   public
@@ -76,7 +81,14 @@ end;
 procedure TWebModule1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
-  PersistentClass := UServerMethods.TServerMethods;
+  PersistentClass := UServerMethods.TAgendaEscolar_V1;
+end;
+
+procedure TWebModule1.DSServerClass2GetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := UServerMethods.TAgendaEscolar_V2;
+
 end;
 
 procedure TWebModule1.WebFileDispatcher1BeforeDispatch(Sender: TObject;

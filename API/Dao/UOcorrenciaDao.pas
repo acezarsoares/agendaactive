@@ -22,11 +22,11 @@ uses USistemaControl, PFuncoes;
 function TOcorrenciaDao.Obter(IdAluno: Integer): TObjectList<TOcorrenciaModel>;
 var
   Qry    : TFDQuery;
-  Lista  : TObjectList<TOcorrenciaModel>;
+  ListaOcorrencia  : TObjectList<TOcorrenciaModel>;
   OcorrenciaModel: TOcorrenciaModel;
 begin
   Qry := TSistemaControl.GetInstance().Conexao.CriarQuery();
-  Lista := TObjectList<TOcorrenciaModel>.Create;
+  ListaOcorrencia := TObjectList<TOcorrenciaModel>.Create;
   try
     Qry.SQL.Text := 'SELECT ao.IdAlunoObs, ' +
                     '       al.NomeAluno, ' +
@@ -56,12 +56,12 @@ begin
       OcorrenciaModel.DataOcorrencia        := Qry.FieldByName('DataOcorrencia').AsDateTime;
       OcorrenciaModel.Ocorrencia            := Qry.FieldByName('Ocorrencia').AsString;
 
-      Lista.Add(OcorrenciaModel);
+      ListaOcorrencia.Add(OcorrenciaModel);
 
       Qry.Next;
     end;
 
-    Result := Lista;
+    Result := ListaOcorrencia;
   finally
     Qry.Free;
   end;

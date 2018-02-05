@@ -13,7 +13,7 @@ uses
 
 type
 {$METHODINFO ON}
-  TServerMethods = class(TComponent)
+  TAgendaEscolar_V1 = class(TComponent)
   private
     { Private declarations }
     FAcessoModel: TAcessoModel;
@@ -44,38 +44,44 @@ type
     // ### Ocorrencia ###
     function Escreva(Value: String): String;
   end;
+
+  TAgendaEscolar_V2 = class(TAgendaEscolar_V1)
+
+  end;
+
+
 {$METHODINFO OFF}
 
 implementation
 
 { TServerMethods }
 
-function TServerMethods.Escreva(Value: String): String;
+function TAgendaEscolar_V1.Escreva(Value: String): String;
 begin
   Result := Value;
 end;
 
-function TServerMethods.Acesso(Login, Senha: String): TJSONArray;
+function TAgendaEscolar_V1.Acesso(Login, Senha: String): TJSONArray;
 begin
   Result := FAcessoModel.Logar(Login, Senha);
 end;
 
-function TServerMethods.Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;
+function TAgendaEscolar_V1.Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;
 begin
   Result := FMensagemModel.Obter(Id, IdTipoMensagem);
 end;
 
-function TServerMethods.MensagemTipo(Id: Integer): TJSONArray;
+function TAgendaEscolar_V1.MensagemTipo(Id: Integer): TJSONArray;
 begin
   Result := FMensagemTipoModel.Obter(Id);
 end;
 
-function TServerMethods.Servicos(Id: Integer): TJSONArray;
+function TAgendaEscolar_V1.Servicos(Id: Integer): TJSONArray;
 begin
   Result := FServicosModel.Obter(Id);
 end;
 
-function TServerMethods.Ocorrencia(IdAluno: Integer): TJSONArray;
+function TAgendaEscolar_V1.Ocorrencia(IdAluno: Integer): TJSONArray;
 begin
   Result := FOcorrenciaModel.Obter(IdAluno)
 end;

@@ -44,15 +44,15 @@ uses UMensagemDao, uSystem.JSONUtil;
 function TMensagemModel.Obter(Id, IdTipoMensagem: Integer): TJSONArray;
 var
   MensagemDao: TMensagemDao;
-  Lista     : TObjectList<TMensagemModel>;
+  ListaMensagem     : TObjectList<TMensagemModel>;
 begin
   MensagemDao := TMensagemDao.Create;
   try
-    Lista := MensagemDao.Obter(Id, IdTipoMensagem);
+    ListaMensagem := MensagemDao.Obter(Id, IdTipoMensagem);
     try
-      Result := TJSONUtil.ObjetoListaParaJson<TMensagemModel>(Lista);
+      Result := TJSONUtil.ObjetoListaParaJson<TMensagemModel>(ListaMensagem);
     finally
-      Lista.Free;
+      ListaMensagem.Free;
     end;
   finally
     MensagemDao.Free;
