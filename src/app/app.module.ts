@@ -21,6 +21,7 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { HttpModule } from '@angular/http';
 
 
+
 @NgModule({
   declarations: [
     MyApp,

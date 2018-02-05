@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MensagemTipoProvider {
 
-  private API_URL:string = 'http://localhost/API/api.dll/datasnap/rest/TServerMethods/'; 
+  private API_URL:string = 'http://10.10.10.131/API/api.dll/datasnap/rest/TServerMethods/'; 
   private data:any;
 
   constructor(public http: Http) {
