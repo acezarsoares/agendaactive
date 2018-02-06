@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoginProvider } from './../../providers/loginProvider/loginprovider';
 import { TabsPage } from '../../pages/tabs/tabs';
+import { UtilProvider } from '../../providers/util/util';
+
+import { not } from '@angular/compiler/src/output/output_ast';
 
 export class Usuario{
   escola:string;
@@ -17,10 +20,12 @@ export class Usuario{
 })
 export class LoginPage {
   user: Usuario;
+
   constructor(
               public navCtrl: NavController,
               public navParams: NavParams,
-              private loginProvider:LoginProvider) {          
+              private loginProvider:LoginProvider,
+              private utilProvider: UtilProvider) {          
     this.user = new Usuario();
   }
 
@@ -28,8 +33,17 @@ export class LoginPage {
   }
 
 
-  login(){
-    this.navCtrl.push(TabsPage)
+  efetuarLogin(){
+    this.loginProvider.ValidaLogin(this.user)
+      .then(data => {
+        console.log(data);
+      if ( data != "" ){
+        this.navCtrl.push(TabsPage)
+      }
+      else{
+        this.utilProvider.mensagemToast('Erro de login.', 3000, 'bottom');
+      }
+    });
   }
 
 }

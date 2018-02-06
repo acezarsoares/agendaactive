@@ -1,19 +1,33 @@
 import { Injectable } from '@angular/core';
 import{ Http, Response } from '@angular/http';
-
 import 'rxjs/add/operator/map';
+
+import { UtilProvider } from '../util/util';
 
 
 @Injectable()
 export class LoginProvider {
 
-  private API_URL:string = 'http://localhost/API/api.dll/datasnap/rest/TServerMethods/'; 
-
-  constructor(public http: Http) {             
+  constructor(public http: Http,
+              private utilProvider: UtilProvider) {   
+                console.log(this.utilProvider.Servidor());
   }
 
   ValidaLogin(user){
-    
+ 
+    return new Promise(resolve => {      
+      this.http.get( this.utilProvider.Servidor() + 'Acesso/'+user.operador+'/'+user.senha)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+          if ( data == [] ){
+            return ""; 
+          }
+          else{
+            return data;
+          }          
+        });
+    });    
   }
 
 }

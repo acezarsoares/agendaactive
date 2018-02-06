@@ -19,6 +19,7 @@ import { MensagemTipoProvider } from '../providers/mensagem-tipo/mensagem-tipo';
 import { MensagemProvider } from '../providers/mensagem/mensagem';
 
 import { HttpModule } from '@angular/http';
+import { UtilProvider } from '../providers/util/util';
 
 
 
@@ -55,7 +56,8 @@ import { HttpModule } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginProvider,
     MensagemTipoProvider,
-    MensagemProvider
+    MensagemProvider,
+    UtilProvider
   ]
 })
 export class AppModule {}
