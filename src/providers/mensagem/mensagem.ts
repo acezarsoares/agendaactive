@@ -2,30 +2,25 @@ import { Injectable } from '@angular/core';
 import{ Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { UtilProvider } from '../util/util';
+
 @Injectable()
 export class MensagemProvider {
 
-  private data:any;
-
-  constructor(public http: Http) {  
-  }
-
-  public Servidor(){
-    return 'http://10.10.10.131/API/api.dll/datasnap/rest/TServerMethods/';
+  constructor(public http: Http,
+              private utilProvider: UtilProvider) {  
   }
 
   public getMensagem(idmobiletipomensagem){
     //if (this.data) {    
     //  return Promise.resolve(this.data);
     //}
-  
     return new Promise(resolve => {   
 
-      this.http.get(this.Servidor() + 'Mensagem/112141/' + idmobiletipomensagem)
+      this.http.get(this.utilProvider.Servidor() + 'Mensagem/112141/'+  idmobiletipomensagem)
         .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
+        .subscribe(data => {      
+          return resolve(data);
         });
     });
   }
