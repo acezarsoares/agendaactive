@@ -41,15 +41,15 @@ uses UOcorrenciaDao, uSystem.JSONUtil;
 function TOcorrenciaModel.Obter(IdAluno: Integer): TJSONArray;
 var
   OcorrenciaDao: TOcorrenciaDao;
-  Lista     : TObjectList<TOcorrenciaModel>;
+  ListaOcorrencias : TObjectList<TOcorrenciaModel>;
 begin
   OcorrenciaDao := TOcorrenciaDao.Create;
   try
-    Lista := OcorrenciaDao.Obter(IdAluno);
+    ListaOcorrencias := OcorrenciaDao.Obter(IdAluno);
     try
-      Result := TJSONUtil.ObjetoListaParaJson<TOcorrenciaModel>(Lista);
+      Result := TJSONUtil.ObjetoListaParaJson<TOcorrenciaModel>(ListaOcorrencias);
     finally
-      Lista.Free;
+      ListaOcorrencias.Free;
     end;
   finally
     OcorrenciaDao.Free;

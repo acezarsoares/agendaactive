@@ -23,11 +23,11 @@ uses USistemaControl, PFuncoes;
 function TMensagemTipoDao.Obter(Id: Integer): TObjectList<TMensagemTipoModel>;
 var
   Qry    : TFDQuery;
-  Lista  : TObjectList<TMensagemTipoModel>;
+  ListaMensagemTipo  : TObjectList<TMensagemTipoModel>;
   MensagemTipoModel: TMensagemTipoModel;
 begin
   Qry := TSistemaControl.GetInstance().Conexao.CriarQuery();
-  Lista := TObjectList<TMensagemTipoModel>.Create;
+  ListaMensagemTipo := TObjectList<TMensagemTipoModel>.Create;
   try
     Qry.SQL.Text := 'DECLARE @Id INT ' +
                     'SET @Id = :Id ' +
@@ -56,12 +56,12 @@ begin
       MensagemTipoModel.NomeMobileTipoMensagem := Qry.FieldByName('NomeMobileTipoMensagem').AsString;
       MensagemTipoModel.QtdeNAOLida            := Qry.FieldByName('QtdeNAOLida').AsInteger;
 
-      Lista.Add(MensagemTipoModel);
+      ListaMensagemTipo.Add(MensagemTipoModel);
 
       Qry.Next;
     end;
 
-    Result := Lista;
+    Result := ListaMensagemTipo;
   finally
     Qry.Free;
   end;

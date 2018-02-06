@@ -23,11 +23,11 @@ uses USistemaControl, PFuncoes;
 function TServicosDao.Obter(Id: Integer): TObjectList<TServicosModel>;
 var
   Qry    : TFDQuery;
-  Lista  : TObjectList<TServicosModel>;
+  ListaServico  : TObjectList<TServicosModel>;
   ServicosModel: TServicosModel;
 begin
   Qry := TSistemaControl.GetInstance().Conexao.CriarQuery();
-  Lista := TObjectList<TServicosModel>.Create;
+  ListaServico := TObjectList<TServicosModel>.Create;
   try
     Qry.SQL.Text := 'DECLARE @IdResponsavel INT ' +
                     'SET @IdResponsavel = :IdResponsavel ' +
@@ -49,12 +49,12 @@ begin
       ServicosModel.Matricula  := Qry.FieldByName('Matricula').AsString;
       ServicosModel.NomeAluno  := Qry.FieldByName('NomeAluno').AsString;
 
-      Lista.Add(ServicosModel);
+      ListaServico.Add(ServicosModel);
 
       Qry.Next;
     end;
 
-    Result := Lista;
+    Result := ListaServico;
   finally
     Qry.Free;
   end;
