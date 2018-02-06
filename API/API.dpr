@@ -23,7 +23,8 @@ uses
   UOcorrenciaModel in 'Model\UOcorrenciaModel.pas',
   UOcorrenciaDao in 'Dao\UOcorrenciaDao.pas',
   UServicosModel in 'Model\UServicosModel.pas',
-  UServicosDao in 'Dao\UServicosDao.pas';
+  UServicosDao in 'Dao\UServicosDao.pas',
+  UTokenModel in 'Model\UTokenModel.pas';
 
 {$R *.res}
 
