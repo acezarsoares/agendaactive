@@ -10,8 +10,8 @@ object WebModule1: TWebModule1
   Height = 439
   Width = 414
   object DSServer1: TDSServer
-    Left = 72
-    Top = 35
+    Left = 64
+    Top = 43
   end
   object DSHTTPWebDispatcher1: TDSHTTPWebDispatcher
     DSContext = 'V1/'

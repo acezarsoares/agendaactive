@@ -13,6 +13,7 @@ type
     FLogin: String;
     FNome: String;
     FTipo: String;
+    Ftoken:String;
 
     procedure SetEmail(const Value: String);
     procedure SetId(const Value: Integer);
@@ -20,6 +21,7 @@ type
     procedure SetNome(const Value: String);
     procedure SetTipo(const Value: String);
   public
+    constructor create();
     function Logar(Login, Senha: String): TJSONArray;
 
     property Id       :Integer read FId write SetId;
@@ -27,14 +29,21 @@ type
     property Tipo     :String read FTipo write SetTipo;
     property Email    :String read FEmail write SetEmail;
     property Login    :String read FLogin write SetLogin;
+    property Token    :String read FToken;
   end;
 
 implementation
 
 { TAcessoModel }
 
-uses UAcessoDao, uSystem.JSONUtil;
+uses UAcessoDao, uSystem.JSONUtil  , UTokenModel;
 
+
+
+constructor TAcessoModel.create;
+begin
+  Ftoken := TToken.Create().Token ;
+end;
 
 function TAcessoModel.Logar(Login, Senha: String): TJSONArray;
 var
@@ -42,6 +51,7 @@ var
   Lista     : TObjectList<TAcessoModel>;
 begin
   AcessoDao := TAcessoDao.Create;
+  Result := TJSONArray.Create;
   try
     Lista := AcessoDao.Logar(Login, Senha);
     try

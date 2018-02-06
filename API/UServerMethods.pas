@@ -16,6 +16,7 @@ type
   TAgendaEscolar_V1 = class(TComponent)
   private
     { Private declarations }
+    fcount :Integer;
     FAcessoModel: TAcessoModel;
     FMensagemModel: TMensagemModel;
     FMensagemTipoModel: TMensagemTipoModel;
@@ -43,6 +44,8 @@ type
     function Ocorrencia(IdAluno: Integer): TJSONArray;
     // ### Ocorrencia ###
     function Escreva(Value: String): String;
+
+    function count():String;
   end;
 
   TAgendaEscolar_V2 = class(TAgendaEscolar_V1)
@@ -56,6 +59,14 @@ implementation
 
 { TServerMethods }
 
+uses UTokenModel;
+
+function TAgendaEscolar_V1.count: String;
+begin
+  inc(fcount);
+  result := FormatFloat('000',fcount);
+end;
+
 function TAgendaEscolar_V1.Escreva(Value: String): String;
 begin
   Result := Value;
@@ -64,6 +75,7 @@ end;
 function TAgendaEscolar_V1.Acesso(Login, Senha: String): TJSONArray;
 begin
   Result := FAcessoModel.Logar(Login, Senha);
+  Result.Add('Token:'+TToken.Create().Token );
 end;
 
 function TAgendaEscolar_V1.Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;
@@ -85,6 +97,7 @@ function TAgendaEscolar_V1.Ocorrencia(IdAluno: Integer): TJSONArray;
 begin
   Result := FOcorrenciaModel.Obter(IdAluno)
 end;
+
 
 
 end.
