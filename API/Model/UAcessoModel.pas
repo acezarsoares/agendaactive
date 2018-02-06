@@ -85,7 +85,6 @@ end;
 
 procedure TAcessoModel.SetToken(const Value: String);
 begin
-  if Value = '##Gerar##' then
     FToken := TToken.Create().Token;
 end;
 

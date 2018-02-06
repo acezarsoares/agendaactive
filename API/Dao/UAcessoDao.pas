@@ -16,7 +16,7 @@ type
 
 implementation
 
-uses USistemaControl, PFuncoes;
+uses USistemaControl, PFuncoes, UTokenModel;
 
 { TAcessoDao }
 
@@ -72,7 +72,7 @@ begin
           AcessoModel.Login := Qry.FieldByName('Login').AsString;
           AcessoModel.Nome  := Qry.FieldByName('Nome').AsString;
           AcessoModel.Email := Qry.FieldByName('Email').AsString;
-          AcessoModel.Token := '##Gerar##';
+          AcessoModel.Token := Ttoken.Create().Token;
 
           ListaAcesso.Add(AcessoModel);
 
