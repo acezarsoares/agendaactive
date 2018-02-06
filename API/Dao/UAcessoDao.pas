@@ -72,6 +72,7 @@ begin
           AcessoModel.Login := Qry.FieldByName('Login').AsString;
           AcessoModel.Nome  := Qry.FieldByName('Nome').AsString;
           AcessoModel.Email := Qry.FieldByName('Email').AsString;
+          AcessoModel.Token := '##Gerar##';
 
           ListaAcesso.Add(AcessoModel);
 

@@ -75,7 +75,6 @@ end;
 function TAgendaEscolar_V1.Acesso(Login, Senha: String): TJSONArray;
 begin
   Result := FAcessoModel.Logar(Login, Senha);
-  Result.Add('Token:'+TToken.Create().Token );
 end;
 
 function TAgendaEscolar_V1.Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;
