@@ -31,11 +31,13 @@ export class UtilProvider {
   }
 
 
-  public LendoTask(msg) {
+  public Loading(msg) {
     let loader = this.loadingCtrl.create({
       content: msg,
       duration: 3000
     });
     loader.present();
+    return loader
   }
+
 }

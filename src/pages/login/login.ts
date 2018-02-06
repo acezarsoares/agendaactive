@@ -34,7 +34,7 @@ export class LoginPage {
 
 
   efetuarLogin(){
-    this.utilProvider.LendoTask('Aguarde...');
+    this.utilProvider.Loading('Aguarde...');
     this.loginProvider.ValidaLogin(this.user)
       .then(data => {
         console.log(data);
