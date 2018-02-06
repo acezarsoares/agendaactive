@@ -34,6 +34,7 @@ export class LoginPage {
 
 
   efetuarLogin(){
+    this.utilProvider.LendoTask('Aguarde...');
     this.loginProvider.ValidaLogin(this.user)
       .then(data => {
         console.log(data);
@@ -43,7 +44,7 @@ export class LoginPage {
       else{
         this.utilProvider.mensagemToast('Erro de login.', 3000, 'bottom');
       }
-    });
+    }).catch(this.utilProvider.mensagemToast('Erro de acesso',3000,'midle'));
   }
 
 }

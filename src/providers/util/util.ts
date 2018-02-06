@@ -1,12 +1,14 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 @Injectable()
 export class UtilProvider {
 
   constructor(public http: Http,
-              private toastCtrl: ToastController){
+              private toastCtrl: ToastController,
+              private loadingCtrl: LoadingController){
   }
 
   public Servidor(){
@@ -26,5 +28,14 @@ export class UtilProvider {
   });
   
   toast.present();
+  }
+
+
+  public LendoTask(msg) {
+    let loader = this.loadingCtrl.create({
+      content: msg,
+      duration: 3000
+    });
+    loader.present();
   }
 }

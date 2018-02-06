@@ -28,7 +28,7 @@ export class LoginProvider {
             return data;
           }          
         });
-    }).catch(this.utilProvider.mensagemToast('Error de acesso, verifique sua conexão ou suporte da APP',3000,'middle'));    
+    }).catch();    
   }
 
 }
