@@ -1,3 +1,14 @@
 page-login {
 
+    .logindiv {
+        width: 200px;
+        height: 200px;
+        margin-left: -100px; /* metade da largura */
+        margin-top: -100px; /* metade da altura */
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        border: 10px solid white;
+    }
+
 }

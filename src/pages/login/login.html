@@ -1,6 +1,8 @@
 <ion-content padding>
   <p> <img src='./assets/imgs/logo.png' /> </p>
 
+  
+  <div class="logindiv">
   <ion-list>
 
     <ion-item>
@@ -17,11 +19,12 @@
       <ion-label stacked>Senha</ion-label>
       <ion-input type="password" [(ngModel)]="user.senha"></ion-input>
     </ion-item>
-
   </ion-list>
 
-  <button ion-button (click)="efetuarLogin()" full>Logar</button>
+  <button ion-button (click)="efetuarLogin()" full> <ion-icon name="person"> Logar</ion-icon> </button>
   <br>
   <button ion-button block > Esqueceu seu e-mail?</button>
+</div>
+
 
 </ion-content>

@@ -3,6 +3,7 @@ import{ Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { UtilProvider } from '../util/util';
+import { Connection } from '@angular/http/src/interfaces';
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export class LoginProvider {
             return data;
           }          
         });
-    });    
+    }).catch();    
   }
 
 }
