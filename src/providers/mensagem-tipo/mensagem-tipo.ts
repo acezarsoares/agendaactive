@@ -12,15 +12,12 @@ export class MensagemTipoProvider {
   }
 
 
-  getMensagemTipo(){
-  
+  getMensagemTipo(){  
     return new Promise(resolve => {      
       this.http.get(this.utilProvider.Servidor() + 'MensagemTipo/112141')
         .map(res => res.json())
         .subscribe(data => {
-          resolve(data);           
-          console.log(data);
-          return data;          
+          resolve(data);                
         });
     });
   }

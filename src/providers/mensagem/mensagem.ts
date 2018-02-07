@@ -20,7 +20,7 @@ export class MensagemProvider {
       this.http.get(this.utilProvider.Servidor() + 'Mensagem/112141/'+  idmobiletipomensagem)
         .map(res => res.json())
         .subscribe(data => {      
-          return resolve(data);
+          resolve(data);
         });
     });
   }
@@ -28,7 +28,7 @@ export class MensagemProvider {
 
   insertMensagem(mensagemModel){
     return new Promise((resolve, reject) => {     
-      this.http.put(this.utilProvider.Servidor() + 'Mensagem', mensagemModel)
+      this.http.post(this.utilProvider.Servidor() + 'Mensagem', mensagemModel)
         .subscribe((res: any) => {
           resolve(res.json());
         },

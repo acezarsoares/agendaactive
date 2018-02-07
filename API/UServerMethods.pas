@@ -30,7 +30,7 @@ type
 
     // ### Mensagem ###
     function Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;  // Get
-    function acceptMensagem(AJSON: TJSONObject): TJSONValue; // Put
+    function updateMensagem(AJSON: TJSONObject): TJSONValue; // Put
     // ### Mensagem ###
 
     // ### MensagemTipo ###
@@ -73,7 +73,7 @@ begin
   Result := Value;
 end;
 
-function TAgendaEscolar_V1.acceptMensagem(AJSON: TJSONObject): TJSONValue;
+function TAgendaEscolar_V1.updateMensagem(AJSON: TJSONObject): TJSONValue;
 begin
   Result := FMensagemModel.Incluir(AJSON);
 end;

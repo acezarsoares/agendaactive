@@ -12,8 +12,8 @@ export class UtilProvider {
   }
 
   public Servidor(){
-    //return 'http://10.10.10.131/API/api.dll/V1/rest/TAgendaEscolar_V1/';
-    return 'http://localhost/API/api.dll/V1/rest/TAgendaEscolar_V1/'
+    return 'http://10.10.10.131/API/api.dll/V1/rest/TAgendaEscolar_V1/';
+    //return 'http://localhost/API/api.dll/V1/rest/TAgendaEscolar_V1/'
   }
 
   public mensagemToast(message, duration, position){

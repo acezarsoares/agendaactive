@@ -1,0 +1,61 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import { LoginProvider } from './../../providers/loginProvider/loginprovider';
+import { TabsPage } from '../../pages/tabs/tabs';
+import { UtilProvider } from '../../providers/util/util';
+
+import { not } from '@angular/compiler/src/output/output_ast';
+
+export class Usuario{
+  escola:string;
+  operador: String;
+  senha: String;
+}
+
+@IonicPage()
+@Component({
+  selector: 'page-login',
+  templateUrl: 'login.html',
+})
+export class LoginPage {
+  user: Usuario;
+
+  constructor(
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private loginProvider:LoginProvider,
+              private utilProvider: UtilProvider) {          
+    this.user = new Usuario();
+  }
+
+  ionViewDidLoad() {
+  }
+
+
+  efetuarLogin(){
+    //console.log( JSON.stringify({id: 'teste', nome: 'anderson'}) );
+    this.loginProvider.ValidaLogin(this.user)
+      .then(data => {
+      if ( data != "" ){
+        this.utilProvider.Loading('Aguarde...');
+        this.navCtrl.push(TabsPage)
+      }
+      else{
+        this.utilProvider.mensagemToast('Erro de login.', 3000, 'bottom');
+      }
+<<<<<<< HEAD
+    })
+    .catch( err => {
+      this.utilProvider.mensagemToast('Erro de acesso',3000,'midle')
+    });
+  }
+
+}
+=======
+    }).catch(error=>{
+      this.utilProvider.mensagemToast('Erro de acesso a internet.', 3000, 'bottom');
+    });
+ }
+}
+>>>>>>> 45d9c604f3a3f5476f8e934a8aa7451fd6112daf

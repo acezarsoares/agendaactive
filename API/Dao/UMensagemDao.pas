@@ -40,6 +40,9 @@ begin
        MensagemModel.IdAutor,
        MensagemModel.TipoAutor,
        MensagemModel.Mensagem]);
+
+       // todo - Implementar retorno do IdMobileMensagem que vem da execução da procedure
+       // MensagemModel.IdMobileMensagem := Qry.ParamByName('IdMobileMensagem').Value;
   finally
     Qry.Free;
   end;

@@ -35,9 +35,11 @@ export class MensagemPage {
 
   enviarMensagem(){
     this.inserirMensagem()
-    .then(() => {
-      this.utilProvider.mensagemToast('Mensagem enviada com sucesso', 3000, 'Top');
-      this.navCtrl.pop();
+    .then(res =>{
+      this.mensagemModel.mensagem = "";
+      this.utilProvider.mensagemToast('Mensagem enviada com sucesso', 3000, 'Top');      
+      //todo - fazer append no objeto mensagem já existente aqui!
+      this.listarMensagem();
     })
     .catch((error) => {
       this.utilProvider.mensagemToast('Erro ao enviar a mensagem. Erro: ' + error.error, 3000, 'Top');      
@@ -45,8 +47,7 @@ export class MensagemPage {
   }
 
   private inserirMensagem(){
-    console.log('Log == ' + this.mensagemModel);
-    return this.mensagemProvider.insertMensagem(this.mensagemModel);
+    return this.mensagemProvider.insertMensagem(JSON.stringify(this.mensagemModel) );
   }
 
   ionViewDidLoad() {
@@ -55,6 +56,7 @@ export class MensagemPage {
 }
 
 export class Mensagem{
+  idMobileMensagem:number;
   idMobileTipoMensagem: number;
   nomeMobileTipoMensagem: string;
   idPessoaRelacionada: number = 112141;
@@ -62,4 +64,6 @@ export class Mensagem{
   idAutor: number = 112141;
   tipoAutor: string = "R";
   mensagem: string;
+  dataHora: any;
+  dataHoraString: string;
 }

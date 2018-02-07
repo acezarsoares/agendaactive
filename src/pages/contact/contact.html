@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Ajustes
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+  
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <ion-item>
+    <ion-label> Receber notificações</ion-label>
+    <ion-toggle checked="true"></ion-toggle>
+  </ion-item> 
+  
+  <br />
+  <button ion-button full (click)="logoutApp()">Logout</button>
 </ion-content>
