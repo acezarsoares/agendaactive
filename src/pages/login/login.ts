@@ -44,7 +44,8 @@ export class LoginPage {
       else{
         this.utilProvider.mensagemToast('Erro de login.', 3000, 'bottom');
       }
-    }).catch(this.utilProvider.mensagemToast('Erro de acesso',3000,'midle'));
-  }
-
+    }).catch(error=>{
+      this.utilProvider.mensagemToast('Erro de acesso a internet.', 3000, 'bottom');
+    });
+ }
 }
