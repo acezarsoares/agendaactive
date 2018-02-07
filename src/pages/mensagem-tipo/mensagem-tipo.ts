@@ -16,7 +16,7 @@ export class MensagemTipoPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private mensagemTipoProvider: MensagemTipoProvider) {   
-                this.listarMensagemTipo();       
+                this.listarMensagemTipo();      
   }
 
   listarMensagemTipo(){
@@ -26,11 +26,12 @@ export class MensagemTipoPage {
     });
   }
 
-  mensagemDetalhe(id:number, tipo:string){  
-    this.navCtrl.push(MensagemPage, {id: id, tipo: tipo});
+  mensagemDetalhe(mensagemtipo){  
+    this.navCtrl.push(MensagemPage, {mensagemtipo});
   }
 
   ionViewDidLoad() {    
   }  
 
 }
+

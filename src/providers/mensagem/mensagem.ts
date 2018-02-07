@@ -25,4 +25,17 @@ export class MensagemProvider {
     });
   }
 
+
+  insertMensagem(mensagemModel){
+    return new Promise((resolve, reject) => {     
+      this.http.put(this.utilProvider.Servidor() + 'Mensagem', mensagemModel)
+        .subscribe((res: any) => {
+          resolve(res.json());
+        },
+        (err) => {
+          reject(err.json());
+        });
+    });
+  }
+
 }

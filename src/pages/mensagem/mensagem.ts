@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { MensagemProvider } from '../../providers/mensagem/mensagem';
+import { UtilProvider } from '../../providers/util/util';
 
 
 @IonicPage()
@@ -11,33 +12,54 @@ import { MensagemProvider } from '../../providers/mensagem/mensagem';
 })
 
 export class MensagemPage {
-  
-  private idmobiletipomensagem: number;
-  private nomemobiletipomensagem: string;    
+  mensagemModel: Mensagem;  
   public mensagem: any;
-  public message: string;
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private mensagemProvider: MensagemProvider){                                
-                this.idmobiletipomensagem   = this.navParams.get("id");
-                this.nomemobiletipomensagem = this.navParams.get("tipo");                
-                this.listarMensagem();
+              private mensagemProvider: MensagemProvider,
+              private utilProvider: UtilProvider){
+                this.mensagemModel = new Mensagem();
+
+                this.mensagemModel.idMobileTipoMensagem   = this.navParams.get("mensagemtipo").idMobileTipoMensagem;
+                this.mensagemModel.nomeMobileTipoMensagem = this.navParams.get("mensagemtipo").nomeMobileTipoMensagem;                
+                this.listarMensagem();                
   }
 
   listarMensagem(){
-    this.mensagemProvider.getMensagem(this.idmobiletipomensagem)
+    this.mensagemProvider.getMensagem(this.mensagemModel.idMobileTipoMensagem)
       .then(data => {
         this.mensagem = data;
       });          
   }
 
-  enviarMessage(){
-    console.log('Mensagem enviada: >> ' + this.message);
-    this.message = '';
+  enviarMensagem(){
+    this.inserirMensagem()
+    .then(() => {
+      this.utilProvider.mensagemToast('Mensagem enviada com sucesso', 3000, 'Top');
+      this.navCtrl.pop();
+    })
+    .catch((error) => {
+      this.utilProvider.mensagemToast('Erro ao enviar a mensagem. Erro: ' + error.error, 3000, 'Top');      
+    })
+  }
+
+  private inserirMensagem(){
+    console.log('Log == ' + this.mensagemModel);
+    return this.mensagemProvider.insertMensagem(this.mensagemModel);
   }
 
   ionViewDidLoad() {
   }
 
+}
+
+export class Mensagem{
+  idMobileTipoMensagem: number;
+  nomeMobileTipoMensagem: string;
+  idPessoaRelacionada: number = 112141;
+  tipoPessoaRelacionada: string = "R";
+  idAutor: number = 112141;
+  tipoAutor: string = "R";
+  mensagem: string;
 }

@@ -7,25 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{this.nomemobiletipomensagem}}</ion-title>
+    <ion-title>{{this.mensagemModel.nomeMobileTipoMensagem}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
     <ion-grid>
-        <ion-row *ngFor="let message of mensagem">
+        <ion-row *ngFor="let msg of mensagem">
           
-          <ion-col col-9 *ngIf="message.tipoAutor === 'U'" class="message" [ngClass]="{'my_message': message.tipoAutor !== 'U', 'other_message': message.tipoAutor === 'U'}">
-            <span class="user_name">{{ message.nomeAutor }}:</span><br>
-            <span class="user_message">{{ message.mensagem }}</span>
-            <div class="time">{{message.dataHora | date:'dd.MM hh:MM'}}</div>
+          <ion-col col-9 *ngIf="msg.tipoAutor === 'U'" class="message" [ngClass]="{'my_message': msg.tipoAutor !== 'U', 'other_message': msg.tipoAutor === 'U'}">
+            <span class="user_name">{{ msg.nomeAutor }}:</span><br>
+            <span class="user_message">{{ msg.mensagem }}</span>
+            <div class="time">{{msg.dataHora | date:'dd.MM hh:MM'}}</div>
           </ion-col>
      
-          <ion-col offset-3 col-9 *ngIf="message.tipoAutor !== 'U'" class="message" [ngClass]="{'my_message': message.tipoAutor !== 'U', 'other_message': message.tipoAutor === 'U'}">
-            <span class="user_name">{{ message.nomeAutor }}:</span><br>
-            <span class="user_message">{{ message.mensagem }}</span>
-            <div class="time">{{message.dataHora | date:'dd.MM hh:MM'}}</div>
+          <ion-col offset-3 col-9 *ngIf="msg.tipoAutor !== 'U'" class="message" [ngClass]="{'my_message': msg.tipoAutor !== 'U', 'other_message': msg.tipoAutor === 'U'}">
+            <span class="user_name">{{ msg.nomeAutor }}:</span><br>
+            <span class="user_message">{{ msg.mensagem }}</span>
+            <div class="time">{{msg.dataHora | date:'dd.MM hh:MM'}}</div>
           </ion-col>
      
         </ion-row>
@@ -39,11 +39,11 @@
       <ion-row class="message_row">
         <ion-col col-9>
           <ion-item no-lines>
-            <ion-input type="text" placeholder="Mensagem" [(ngModel)]="message"></ion-input>
+            <ion-input type="text" placeholder="Mensagem" [(ngModel)]="mensagemModel.mensagem"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col col-3>
-          <button ion-button clear color="primary" (click)="enviarMessage()" [disabled]="message === ''">
+          <button ion-button clear color="primary" (click)="enviarMensagem()" [disabled]="mensagemModel.mensagem === ''">
           Enviar
         </button>
         </ion-col>

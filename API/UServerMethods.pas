@@ -29,7 +29,8 @@ type
     // ### Acesso ##
 
     // ### Mensagem ###
-    function Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;
+    function Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;  // Get
+    function acceptMensagem(AJSON: TJSONObject): TJSONValue; // Put
     // ### Mensagem ###
 
     // ### MensagemTipo ###
@@ -70,6 +71,11 @@ end;
 function TAgendaEscolar_V1.Escreva(Value: String): String;
 begin
   Result := Value;
+end;
+
+function TAgendaEscolar_V1.acceptMensagem(AJSON: TJSONObject): TJSONValue;
+begin
+  Result := FMensagemModel.Incluir(AJSON);
 end;
 
 function TAgendaEscolar_V1.Acesso(Login, Senha: String): TJSONArray;

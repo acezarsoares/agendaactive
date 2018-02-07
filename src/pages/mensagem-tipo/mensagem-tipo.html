@@ -14,7 +14,7 @@
     </ion-note>  
 
     <ion-list>
-      <button ion-item *ngFor="let item of mensagemtipo" (click)="mensagemDetalhe(item.idMobileTipoMensagem, item.nomeMobileTipoMensagem)">        
+      <button ion-item *ngFor="let item of mensagemtipo" (click)="mensagemDetalhe(item)">        
         {{item.nomeMobileTipoMensagem}}
         <ion-badge item-end *ngIf="(item.qtdeNAOLida >= 1)">{{item.qtdeNAOLida}}</ion-badge>                   
       </button>        

@@ -12,7 +12,8 @@ export class UtilProvider {
   }
 
   public Servidor(){
-    return 'http://10.10.10.131/API/api.dll/V1/rest/TAgendaEscolar_V1/';
+    //return 'http://10.10.10.131/API/api.dll/V1/rest/TAgendaEscolar_V1/';
+    return 'http://localhost/API/api.dll/V1/rest/TAgendaEscolar_V1/'
   }
 
   public mensagemToast(message, duration, position){
@@ -34,7 +35,7 @@ export class UtilProvider {
   public Loading(msg) {
     let loader = this.loadingCtrl.create({
       content: msg,
-      duration: 3000
+      duration: 2000
     });
     loader.present();
     return loader

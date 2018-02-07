@@ -29,7 +29,8 @@ procedure TConexao.ConfigurarConexao;
 begin
   FConn.Params.Clear;
   FConn.Params.Add('DriverID=MSSQL');
-  FConn.Params.Add('Server=10.10.10.131,1412');
+  //FConn.Params.Add('Server=10.10.10.131,1412');
+  FConn.Params.Add('Server=SQL2012');
   FConn.Params.Add('Database=dbSigaFacho');
   FConn.Params.Add('User_Name=sa');
   FConn.Params.Add('Password=active');

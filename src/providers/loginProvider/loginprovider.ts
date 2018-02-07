@@ -28,7 +28,8 @@ export class LoginProvider {
             return data;
           }          
         });
-    }).catch();    
+    })
+    .catch();    
   }
 
 }

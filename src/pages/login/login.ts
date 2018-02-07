@@ -34,17 +34,20 @@ export class LoginPage {
 
 
   efetuarLogin(){
-    this.utilProvider.Loading('Aguarde...');
+    //console.log( JSON.stringify({id: 'teste', nome: 'anderson'}) );
     this.loginProvider.ValidaLogin(this.user)
       .then(data => {
-        console.log(data);
       if ( data != "" ){
+        this.utilProvider.Loading('Aguarde...');
         this.navCtrl.push(TabsPage)
       }
       else{
         this.utilProvider.mensagemToast('Erro de login.', 3000, 'bottom');
       }
-    }).catch(this.utilProvider.mensagemToast('Erro de acesso',3000,'midle'));
+    })
+    .catch( err => {
+      this.utilProvider.mensagemToast('Erro de acesso',3000,'midle')
+    });
   }
 
 }
