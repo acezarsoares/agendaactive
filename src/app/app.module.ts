@@ -21,6 +21,7 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { HttpModule } from '@angular/http';
 import { UtilProvider } from '../providers/util/util';
 
+import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from '../components/timeline/timeline';
 
 
 @NgModule({
@@ -32,7 +33,10 @@ import { UtilProvider } from '../providers/util/util';
     TabsPage,
     LoginPage,
     MensagemTipoPage,
-    MensagemPage
+    MensagemPage,
+    TimelineComponent,
+    TimelineItemComponent,
+    TimelineTimeComponent    
   ],
   imports: [
     BrowserModule,
