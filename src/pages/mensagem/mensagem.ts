@@ -54,6 +54,13 @@ export class MensagemPage {
   ionViewDidLoad() {
   }
 
+  doRefresh(refresher) {
+    this.listarMensagem();
+    setTimeout(() => {
+      refresher.complete();
+    }, 1000);
+  }
+
 }
 
 export class Mensagem{
