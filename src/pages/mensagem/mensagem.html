@@ -23,14 +23,14 @@
           
           <ion-col col-9 *ngIf="msg.tipoAutor === 'U'" class="message" [ngClass]="{'my_message': msg.tipoAutor !== 'U', 'other_message': msg.tipoAutor === 'U'}">
             <span class="user_name">{{ msg.nomeAutor }}:</span><br>
-            <span class="user_message">{{ msg.mensagem }}</span>
-            <div class="time">{{msg.dataHora | date:'dd.MM hh:MM'}}</div>
+            <span class="user_message">{{ msg.mensagem }}</span><br>
+            <div class="time">{{msg.dataHora | date:'dd/MM/yyyy hh:MM'}}</div>
           </ion-col>
      
           <ion-col offset-3 col-9 *ngIf="msg.tipoAutor !== 'U'" class="message" [ngClass]="{'my_message': msg.tipoAutor !== 'U', 'other_message': msg.tipoAutor === 'U'}">
             <span class="user_name">{{ msg.nomeAutor }}:</span><br>
-            <span class="user_message">{{ msg.mensagem }}</span>
-            <div class="time">{{msg.dataHora | date:'dd.MM hh:MM'}}</div>
+            <span class="user_message">{{ msg.mensagem }}</span><br>
+            <div class="time">{{msg.dataHora | date:'dd/MM/yyyy hh:MM'}}</div>
           </ion-col>
      
         </ion-row>

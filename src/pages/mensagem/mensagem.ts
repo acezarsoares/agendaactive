@@ -72,7 +72,7 @@ export class Mensagem{
   idAutor: number = 112141;
   nomeAutor: string = "DAFINY DE PAULA GOMES";
   tipoAutor: string = "R";
-  mensagem: string;
+  mensagem: string = "";
   dataHora: any;
   dataHoraString: string;
 }

@@ -6,12 +6,13 @@
   </ion-navbar>
 </ion-header>
   
-<ion-content>
-  <ion-item>
-    <ion-label> Receber notificações</ion-label>
-    <ion-toggle checked="true"></ion-toggle>
-  </ion-item> 
-  
-  <br />
-  <button ion-button full (click)="logoutApp()">Logout</button>
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label> Receber notificações</ion-label>
+      <ion-toggle checked="true"></ion-toggle>
+    </ion-item>   
+  </ion-list>
+
+  <button ion-button full block round (click)="logoutApp()">Logout</button>      
 </ion-content>
