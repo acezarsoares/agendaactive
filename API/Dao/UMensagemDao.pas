@@ -41,8 +41,8 @@ begin
        MensagemModel.TipoAutor,
        MensagemModel.Mensagem]);
 
-       // todo - Implementar retorno do IdMobileMensagem que vem da execução da procedure
-       // MensagemModel.IdMobileMensagem := Qry.ParamByName('IdMobileMensagem').Value;
+      // todo - Resolver o retorno do IdMobileMensagem da procedure SpMobileGravarMensagem
+      //Result := Qry.ParamByName('IdMobileMensagem').AsInteger;
   finally
     Qry.Free;
   end;

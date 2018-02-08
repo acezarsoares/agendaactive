@@ -16,7 +16,7 @@ export class ContactPage {
   
   logoutApp(){
     console.log("Saiu");
-    // Remove API token       
+    // todo - Remove API token       
     this.navCtrl.push(LoginPage);
   }
 }

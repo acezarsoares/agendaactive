@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -22,7 +23,7 @@ export class MensagemPage {
                 this.mensagemModel = new Mensagem();
 
                 this.mensagemModel.idMobileTipoMensagem   = this.navParams.get("mensagemtipo").idMobileTipoMensagem;
-                this.mensagemModel.nomeMobileTipoMensagem = this.navParams.get("mensagemtipo").nomeMobileTipoMensagem;                
+                this.mensagemModel.nomeMobileTipoMensagem = this.navParams.get("mensagemtipo").nomeMobileTipoMensagem;                                
                 this.listarMensagem();                
   }
 
@@ -36,6 +37,7 @@ export class MensagemPage {
   enviarMensagem(){
     this.inserirMensagem()
     .then(res =>{
+      console.log(res);
       this.mensagemModel.mensagem = "";
       this.utilProvider.mensagemToast('Mensagem enviada com sucesso', 3000, 'Top');      
       this.mensagem.push(res);
@@ -61,6 +63,7 @@ export class Mensagem{
   idPessoaRelacionada: number = 112141;
   tipoPessoaRelacionada: string = "R";
   idAutor: number = 112141;
+  nomeAutor: string = "DAFINY DE PAULA GOMES";
   tipoAutor: string = "R";
   mensagem: string;
   dataHora: any;
