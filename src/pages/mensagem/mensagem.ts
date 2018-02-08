@@ -13,7 +13,7 @@ import { UtilProvider } from '../../providers/util/util';
 
 export class MensagemPage {
   mensagemModel: Mensagem;  
-  public mensagem: any;
+  public mensagem: any = [];
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -38,8 +38,7 @@ export class MensagemPage {
     .then(res =>{
       this.mensagemModel.mensagem = "";
       this.utilProvider.mensagemToast('Mensagem enviada com sucesso', 3000, 'Top');      
-      //todo - fazer append no objeto mensagem já existente aqui!
-      this.listarMensagem();
+      this.mensagem.push(res);
     })
     .catch((error) => {
       this.utilProvider.mensagemToast('Erro ao enviar a mensagem. Erro: ' + error.error, 3000, 'Top');      
