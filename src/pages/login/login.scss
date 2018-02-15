@@ -1,2 +1,23 @@
+
 page-login {
+
+    input {
+           color: hsl(212, 100%, 50%);
+    }
+
+    ion-content{
+        background-image: url('../../assets/imgs/telalogin.gif') ;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .item.item-trns {
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+        color: white; 
+    }
+
+    .ion-label{
+        font-color:  hsl(212, 100%, 50%);
+        }
 }
