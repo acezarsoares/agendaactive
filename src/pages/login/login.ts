@@ -8,9 +8,9 @@ import { UtilProvider } from '../../providers/util/util';
 import { not } from '@angular/compiler/src/output/output_ast';
 
 export class Usuario{
-  escola:string;
-  operador: String;
-  senha: String;
+  escola:string='';
+  operador: String='';
+  senha: String='';
 }
 
 @IonicPage()
@@ -48,6 +48,15 @@ export class LoginPage {
     .catch( err => {
       this.utilProvider.mensagemToast('Erro de acesso',3000,'midle')
     });
+  }
+
+
+  ValidaBtnLogin(){
+   if(this.user.escola == '' || this.user.operador == '' || this.user.senha == ''){
+     return true
+   } else {
+     return false
+   }
   }
 
 }
