@@ -48,7 +48,7 @@ export class MensagemPage {
   }
 
   private inserirMensagem(){
-    return this.mensagemProvider.insertMensagem(JSON.stringify(this.mensagemModel) );
+    return this.mensagemProvider.insertMensagem(this.mensagemModel);
   }
 
   ionViewDidLoad() {

@@ -9,7 +9,8 @@ uses
   UMensagemModel,
   UMensagemTipoModel,
   UServicosModel,
-  UOcorrenciaModel;
+  UOcorrenciaModel,
+  UTimeLineModel;
 
 type
 {$METHODINFO ON}
@@ -22,6 +23,7 @@ type
     FMensagemTipoModel: TMensagemTipoModel;
     FServicosModel: TServicosModel;
     FOcorrenciaModel: TOcorrenciaModel;
+    FTimeLineModel: TTimeLineModel;
   public
     { Public declarations }
     // ### Acesso ##
@@ -44,6 +46,10 @@ type
     // ### Ocorrencia ###
     function Ocorrencia(IdAluno: Integer): TJSONArray;
     // ### Ocorrencia ###
+
+    // ### Timeline ###
+    function TimeLine(IdResponsavel: Integer): TJSONArray;
+    // ### Timeline ###
     function Escreva(Value: String): String;
 
     function count():String;
@@ -96,6 +102,11 @@ end;
 function TAgendaEscolar_V1.Servicos(Id: Integer): TJSONArray;
 begin
   Result := FServicosModel.Obter(Id);
+end;
+
+function TAgendaEscolar_V1.TimeLine(IdResponsavel: Integer): TJSONArray;
+begin
+  Result := FTimeLineModel.Obter(IdResponsavel);
 end;
 
 function TAgendaEscolar_V1.Ocorrencia(IdAluno: Integer): TJSONArray;

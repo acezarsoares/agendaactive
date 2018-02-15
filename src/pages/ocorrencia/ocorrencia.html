@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ocorrências</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card *ngFor="let oc of ocorrencia">
+      <ion-card-header color="primary">
+        {{oc.dataOcorrenciaString}}<br />
+        {{oc.nomeTipoOcorrencia}}
+      </ion-card-header>
+      <ion-card-content>
+          {{oc.ocorrencia}}
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -6,17 +6,40 @@
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
+  <ion-content padding>     
+
+    <ion-list>
+      <div class="card">
+        <ion-item>
+          <ion-note item-left color=dark>
+              APLICATIVO MOBILE DO CENTRO EDUCACIONAL
+          </ion-note>   
+        </ion-item>
+          <ion-item>
+              <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/wyVM1evRxNw" frameborder="0" width="100%" height="315"></iframe>
+              </div>                  
+          </ion-item>
+          <ion-item>
+            <ion-note item-left color=dark>
+                Este é o novo aplicativo do Centro educacional. Com ele você poderá receber mensagens e estar sempre por dentro dos acontecimentos.                          
+            </ion-note>              
+          </ion-item>
+      </div>
+    </ion-list>    
+
     <timeline endIcon="call">
-      <timeline-item *ngFor="let item of items">
-        <timeline-time [time]="item.time"></timeline-time>
-        <ion-icon [name]="item.icon"></ion-icon>
+      <timeline-item *ngFor="let tl of timeline">
+        <timeline-time [time]="tl.time"></timeline-time>
+        <ion-icon [name]="tl.icone"></ion-icon>
         <ion-card>
           <ion-card-header>
-            {{item.title}}
+            <b>{{tl.titulo}}</b><br *ngIf="(tl.subtitle !== '')" />
+            {{tl.subTitulo}}
           </ion-card-header>
           <ion-card-content>
-            {{item.content}}
+            {{tl.conteudo}}<br *ngIf="(tl.detalheConteudo !== '')" /><br *ngIf="(tl.detalheConteudo !== '')" />
+            {{tl.detalheConteudo}}
           </ion-card-content>
         </ion-card>
       </timeline-item>

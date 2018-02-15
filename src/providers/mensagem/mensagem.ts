@@ -12,9 +12,7 @@ export class MensagemProvider {
   }
 
   public getMensagem(idmobiletipomensagem){
-    //if (this.data) {    
-    //  return Promise.resolve(this.data);
-    //}
+
     return new Promise(resolve => {   
 
       this.http.get(this.utilProvider.Servidor() + 'Mensagem/112141/'+  idmobiletipomensagem)
@@ -27,8 +25,9 @@ export class MensagemProvider {
 
 
   insertMensagem(mensagemModel){
+
     return new Promise((resolve, reject) => {     
-      this.http.post(this.utilProvider.Servidor() + 'Mensagem', mensagemModel)
+      this.http.post(this.utilProvider.Servidor() + 'Mensagem', JSON.stringify(mensagemModel) )
         .subscribe((res: any) => {
           resolve(res.json());
         },

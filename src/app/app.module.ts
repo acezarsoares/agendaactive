@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { MensagemTipoPage } from '../pages/mensagem-tipo/mensagem-tipo';
 import { MensagemPage } from '../pages/mensagem/mensagem';
+import { OcorrenciaPage } from '../pages/ocorrencia/ocorrencia';
  
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +23,8 @@ import { HttpModule } from '@angular/http';
 import { UtilProvider } from '../providers/util/util';
 
 import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from '../components/timeline/timeline';
+import { HomeProvider } from '../providers/home/home';
+import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
 
 
 @NgModule({
@@ -34,6 +37,8 @@ import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from 
     LoginPage,
     MensagemTipoPage,
     MensagemPage,
+    OcorrenciaPage,
+
     TimelineComponent,
     TimelineItemComponent,
     TimelineTimeComponent    
@@ -52,7 +57,8 @@ import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from 
     TabsPage,
     LoginPage,
     MensagemTipoPage,
-    MensagemPage
+    MensagemPage,
+    OcorrenciaPage
   ],
   providers: [
     StatusBar,
@@ -61,7 +67,9 @@ import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from 
     LoginProvider,
     MensagemTipoProvider,
     MensagemProvider,
-    UtilProvider
+    UtilProvider,
+    HomeProvider,
+    OcorrenciaProvider
   ]
 })
 export class AppModule {}

@@ -24,7 +24,9 @@ uses
   UOcorrenciaDao in 'Dao\UOcorrenciaDao.pas',
   UServicosModel in 'Model\UServicosModel.pas',
   UServicosDao in 'Dao\UServicosDao.pas',
-  UTokenModel in 'Model\UTokenModel.pas';
+  UTokenModel in 'Model\UTokenModel.pas',
+  UTimeLineModel in 'Model\UTimeLineModel.pas',
+  UTimeLineDao in 'Dao\UTimeLineDao.pas';
 
 {$R *.res}
 
