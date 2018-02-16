@@ -59,4 +59,8 @@ export class LoginPage {
    }
   }
 
+  EsqueceuLogin(){
+    this.utilProvider.mensagemToast('Senha enviada com sucesso.',3000,'midle')
+  }
+
 }
