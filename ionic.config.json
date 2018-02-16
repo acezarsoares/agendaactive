@@ -1,6 +1,6 @@
 {
   "name": "agendaactive",
-  "app_id": "",
+  "app_id": "20563090",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
