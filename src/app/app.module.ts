@@ -26,6 +26,7 @@ import { TimelineComponent, TimelineItemComponent, TimelineTimeComponent } from 
 import { HomeProvider } from '../providers/home/home';
 import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
 
+import { Splash } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
 
     TimelineComponent,
     TimelineItemComponent,
-    TimelineTimeComponent    
+    TimelineTimeComponent,
+    
+    Splash
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,9 @@ import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
     LoginPage,
     MensagemTipoPage,
     MensagemPage,
-    OcorrenciaPage
+    OcorrenciaPage,
+
+    Splash
   ],
   providers: [
     StatusBar,
