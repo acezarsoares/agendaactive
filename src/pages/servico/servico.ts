@@ -4,11 +4,11 @@ import { NavController } from 'ionic-angular';
 import { OcorrenciaPage } from './../ocorrencia/ocorrencia';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-servico',
+  templateUrl: 'servico.html'
 })
-export class AboutPage {
-
+export class ServicoPage {
+  
   constructor(public navCtrl: NavController) {
 
   }

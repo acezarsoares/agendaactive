@@ -6,10 +6,10 @@ import { LoginPage } from '../login/login';
 
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-ajuste',
+  templateUrl: 'ajuste.html'
 })
-export class ContactPage {
+export class AjustePage {
 
   constructor(public navCtrl: NavController,
               private app: App) {
