@@ -55,8 +55,16 @@ procedure TWebModule1.WebModule1DefaultHandlerAction(Sender: TObject;
 begin
   Response.Content :=
     '<html>' +
-    '<head><title>DataSnap Server</title></head>' +
-    '<body>DataSnap Server</body>' +
+    '<head><title>Active Agenda API Rest Server</title></head>' +
+    '<body>'+
+    'DataSnap Server <br>'+
+    'To Call API, use these sintaxe <br>'+
+    'BaseUrl = <b>http://18.216.118.169/api.activesoft.com.br/api.dll/v1/rest/TAgendaEscolar_V1/{RESOURCE/PARAM} </b> <br> '+
+    'Resource can be : <br>'+
+    '   <b>Acesso/login/password</b> <br>'+
+    '   <b>Mensagem/id/idtipomensagem</b> <br>'+
+    '   <B>MensagemTipo/id</B>'+
+    '</body>' +
     '</html>';
 end;
 

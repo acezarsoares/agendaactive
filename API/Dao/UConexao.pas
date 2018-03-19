@@ -11,12 +11,10 @@ type
   TConexao = class
   private
     FConn: TFDConnection;
-
     procedure ConfigurarConexao;
-  public
     constructor Create;
-    destructor Destroy; override;
-
+    destructor Destroy;
+  public
     function GetConn: TFDConnection;
     function CriarQuery: TFDQuery;
   end;
@@ -30,16 +28,14 @@ begin
   FConn.Params.Clear;
   FConn.Params.Add('DriverID=MSSQL');
   //FConn.Params.Add('Server=10.10.10.131,1412');
-  FConn.Params.Add('Server=SQL2012');
-  FConn.Params.Add('Database=dbSigaFacho');
+  FConn.Params.Add('Server=EC2AMAZ-HMIL9EU\SQL2008');
+  FConn.Params.Add('Database=dbSigaModelo_v29');
   FConn.Params.Add('User_Name=sa');
-  FConn.Params.Add('Password=active');
+  FConn.Params.Add('Password=Active123');
 end;
 
 constructor TConexao.Create;
 begin
-  FConn := TFDConnection.Create(nil);
-
   Self.ConfigurarConexao();
 end;
 
@@ -49,19 +45,19 @@ var
 begin
   VQuery := TFDQuery.Create(nil);
   VQuery.Connection := FConn;
-
   Result := VQuery;
 end;
 
 destructor TConexao.Destroy;
 begin
   FConn.Free;
-
-  inherited;
 end;
 
 function TConexao.GetConn: TFDConnection;
 begin
+  if not Assigned(FConn) then
+     FConn := TFDConnection.Create(nil);
+
   Result := FConn;
 end;
 

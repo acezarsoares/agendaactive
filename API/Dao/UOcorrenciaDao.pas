@@ -4,7 +4,7 @@ interface
 
 uses
   System.Generics.Collections, FireDAC.Comp.Client, System.SysUtils,
-
+  FireDAC.Stan.Param,
   UOcorrenciaModel;
 
 type

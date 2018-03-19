@@ -17,42 +17,46 @@ type
   TAgendaEscolar_V1 = class(TComponent)
   private
     { Private declarations }
-    fcount :Integer;
-    FAcessoModel: TAcessoModel;
-    FMensagemModel: TMensagemModel;
+    FAcessoModel      : TAcessoModel;
+    FMensagemModel    : TMensagemModel;
     FMensagemTipoModel: TMensagemTipoModel;
-    FServicosModel: TServicosModel;
-    FOcorrenciaModel: TOcorrenciaModel;
-    FTimeLineModel: TTimeLineModel;
+    FServicosModel    : TServicosModel;
+    FOcorrenciaModel  : TOcorrenciaModel;
+    FTimeLineModel    : TTimeLineModel;
   public
     { Public declarations }
-    // ### Acesso ##
-    function Acesso(Login, Senha: String): TJSONArray;
-    // ### Acesso ##
+    fcount :Integer;
 
-    // ### Mensagem ###
+    {$Region 'Acesso'}
+    function Acesso(Login, Senha: String): TJSONArray;
+    {$endRegion}
+
+    {$Region 'Mensagem'}
     function Mensagem(Id, IdTipoMensagem: Integer): TJSONArray;  // Get
     function updateMensagem(AJSON: TJSONObject): TJSONValue; // Put
-    // ### Mensagem ###
+    {$EndRegion}
 
-    // ### MensagemTipo ###
+    {$Region 'MensagemTipo'}
     function MensagemTipo(Id: Integer): TJSONArray;
-    // ### MensagemTipo ###
+    {$EndRegion}
 
-    // ### Servicos ###
+    {$Region 'Servicos'}
     function Servicos(Id: Integer): TJSONArray;
-    // ### Servicos ###
+    {$EndRegion}
 
-    // ### Ocorrencia ###
+    {$Region 'Ocorrencia'}
     function Ocorrencia(IdAluno: Integer): TJSONArray;
-    // ### Ocorrencia ###
+    {$EndRegion}
 
-    // ### Timeline ###
+    {$Region 'Timeline'}
     function TimeLine(IdResponsavel: Integer): TJSONArray;
-    // ### Timeline ###
-    function Escreva(Value: String): String;
+    {$EndRegion}
 
+    {$Region 'Varios'}
+    function Escreva(Value: String): String;
     function count():String;
+    {$EndRegion}
+
   end;
 
   TAgendaEscolar_V2 = class(TAgendaEscolar_V1)
