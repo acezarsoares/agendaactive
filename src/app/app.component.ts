@@ -6,12 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from './../pages/login/login';
 
 import { Splash } from '../pages/splash/splash';
+import { UploadPage } from '../pages/upload/upload';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = UploadPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,modalCtrl: ModalController) {
     platform.ready().then(() => {
