@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Foto Upload
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+    <ion-card>
+        <img src="{{currentPhoto}}"/>
+      </ion-card>
+</ion-content>
+ 
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Foto
+      </button>
+
+      <button ion-button icon-left (click)="uploadImage()">
+          <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+
+
+      <button ion-button icon-left (click)="limparImage()">
+          <ion-icon name="ion-icon"></ion-icon>Limpar
+      </button>
+  
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -27,6 +27,12 @@ import { HomeProvider } from '../providers/home/home';
 import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
 
 import { Splash } from '../pages/splash/splash';
+import { UploadPageModule } from '../pages/upload/upload.module';
+
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -48,6 +54,7 @@ import { Splash } from '../pages/splash/splash';
   ],
   imports: [
     BrowserModule,
+    UploadPageModule,
     IonicModule.forRoot(MyApp),
     HttpModule
   ],
@@ -66,6 +73,10 @@ import { Splash } from '../pages/splash/splash';
     Splash
   ],
   providers: [
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
