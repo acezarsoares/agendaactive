@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Datasnap.DSServer, Datasnap.DSAuth, System.JSON,
-
+  UTokenModel, UArquivosDao,
   UAcessoModel,
   UMensagemModel,
   UMensagemTipoModel,
@@ -57,6 +57,11 @@ type
     function count():String;
     {$EndRegion}
 
+    {$Region 'Arquivos'}
+    function SendFile( Mensagem:String ;FileBase64:String):String;
+    {$EndRegion}
+
+
   end;
 
   TAgendaEscolar_V2 = class(TAgendaEscolar_V1)
@@ -70,7 +75,6 @@ implementation
 
 { TServerMethods }
 
-uses UTokenModel;
 
 function TAgendaEscolar_V1.count: String;
 begin
@@ -101,6 +105,19 @@ end;
 function TAgendaEscolar_V1.MensagemTipo(Id: Integer): TJSONArray;
 begin
   Result := FMensagemTipoModel.Obter(Id);
+end;
+
+function TAgendaEscolar_V1.SendFile( Mensagem, FileBase64: String):String;
+var
+  arq : TArquivos;
+
+begin
+   arq := TArquivos.Create;
+
+   arq.GravarArquivo(Mensagem,FileBase64);
+
+
+
 end;
 
 function TAgendaEscolar_V1.Servicos(Id: Integer): TJSONArray;

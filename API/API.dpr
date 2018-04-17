@@ -26,7 +26,9 @@ uses
   UServicosDao in 'Dao\UServicosDao.pas',
   UTokenModel in 'Model\UTokenModel.pas',
   UTimeLineModel in 'Model\UTimeLineModel.pas',
-  UTimeLineDao in 'Dao\UTimeLineDao.pas';
+  UTimeLineDao in 'Dao\UTimeLineDao.pas',
+  UArquivosModel in 'Model\UArquivosModel.pas',
+  UArquivosDao in 'Dao\UArquivosDao.pas';
 
 {$R *.res}
 
