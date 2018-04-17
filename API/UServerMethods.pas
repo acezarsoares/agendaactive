@@ -58,7 +58,7 @@ type
     {$EndRegion}
 
     {$Region 'Arquivos'}
-    function SendFile( Mensagem:String ;FileBase64:String):String;
+    function updateSendFile( Param:TJsonObject):String;
     {$EndRegion}
 
 
@@ -107,17 +107,12 @@ begin
   Result := FMensagemTipoModel.Obter(Id);
 end;
 
-function TAgendaEscolar_V1.SendFile( Mensagem, FileBase64: String):String;
+function TAgendaEscolar_V1.updateSendFile( Param: TJsonObject):String;
 var
   arq : TArquivos;
-
 begin
    arq := TArquivos.Create;
-
-   arq.GravarArquivo(Mensagem,FileBase64);
-
-
-
+   arq.GravarArquivo(Param);
 end;
 
 function TAgendaEscolar_V1.Servicos(Id: Integer): TJSONArray;
