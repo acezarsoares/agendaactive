@@ -29,9 +29,11 @@ import { OcorrenciaProvider } from '../providers/ocorrencia/ocorrencia';
 import { Splash } from '../pages/splash/splash';
 import { UploadPageModule } from '../pages/upload/upload.module';
 
-import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
+
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({
@@ -85,7 +87,11 @@ import { Camera } from '@ionic-native/camera';
     MensagemProvider,
     UtilProvider,
     HomeProvider,
-    OcorrenciaProvider
+    OcorrenciaProvider,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Camera
   ]
 })
 export class AppModule {}

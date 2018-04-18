@@ -7,6 +7,10 @@ import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera, CameraOptions} from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Http } from '@angular/http';
+
+const urlt = 'http://18.216.118.169/api.activesoft.com.br/api.dll/V1/rest/TAgendaEscolar_V1/SendFile/';
 
 declare var cordova: any;
 
@@ -17,6 +21,7 @@ declare var cordova: any;
 })
 export class UploadPage {
 
+  [x: string]: any;
   lastImage: string = null;
   loading: Loading;
   currentPhoto:any;
@@ -126,37 +131,33 @@ public pathForImage(img) {
 
 
   public uploadImage() {
-    // Destination URL
-    var url = "https://s3-sa-east-1.amazonaws.com/s3.activeagenda.com.br/";
-   
-    // File for Upload
-    var targetPath = this.pathForImage(this.currentPhoto);
-   
-    // File name only
-    var filename = this.currentPhoto;
-   
-    var options = {
-      fileKey: "file",
-      fileName: filename,
-      chunkedMode: false,
-      mimeType: "multipart/form-data",
-      params : {'fileName': filename}
-    };
-   
-    const fileTransfer: TransferObject = this.transfer.create();
-   
-    this.loading = this.loadingCtrl.create({
-      content: 'Uploading...',
-    });
-    this.loading.present();
-   
-    // Use the FileTransfer to upload the image
-    fileTransfer.upload(targetPath, url, options).then(data => {
-      this.loading.dismissAll()
-      this.presentToast('Upload com sucesso.');
-    }, err => {
-      this.loading.dismissAll()
-      this.presentToast('Erro upload do aquivo.');
+    
+        
+    this.convertToBase64(this.currentPhoto, 'image/png').then(
+      data => {
+        console.log(data.toString());
+      }
+    );
+  
+     
+  }
+
+  convertToBase64(url, outputFormat) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = function () {
+        let canvas = <HTMLCanvasElement>document.createElement('CANVAS'),
+          ctx = canvas.getContext('2d'),
+          dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        canvas = null;
+        resolve(dataURL);
+      };
+      img.src = url;
     });
   }
 
