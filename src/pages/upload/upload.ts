@@ -8,9 +8,10 @@ import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera, CameraOptions} from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { Http } from '@angular/http';
+import{ Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
-const urlt = 'http://18.216.118.169/api.activesoft.com.br/api.dll/V1/rest/TAgendaEscolar_V1/SendFile/';
+const urlt = 'http://18.216.118.169/api.activesoft.com.br/api.dll/V1/rest/TAgendaEscolar_V1/SendFile';
 
 declare var cordova: any;
 
@@ -25,6 +26,8 @@ export class UploadPage {
   lastImage: string = null;
   loading: Loading;
   currentPhoto:any;
+  imagebase64:any;
+  cjson:any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private camera: Camera, 
@@ -86,7 +89,7 @@ public pathForImage(img) {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
+      encodingType: this.camera.EncodingType.PNG,
       mediaType:this.camera.MediaType.PICTURE,
       sourceType: sourceType != "picture" ? this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.SAVEDPHOTOALBUM,
       correctOrientation: true
@@ -94,7 +97,7 @@ public pathForImage(img) {
 
     this.camera.getPicture(options).then((imageData) => {
 
-      this.currentPhoto = 'data:image/jpeg;base64,' + imageData;
+      this.currentPhoto = 'data:image/png;base64,' + imageData;
 
     }, (err) => {
       // Handle error
@@ -130,16 +133,41 @@ public pathForImage(img) {
 
 
 
+  EnviarFoto(base64){
+    this.cjson = JSON.stringify(base64)
+    return new Promise((resolve, reject) => {     
+      this.http.post(urlt, this.cjson)
+        .subscribe((res: any) => {
+          resolve(res.json());
+        },
+        (err) => {
+          reject(err.json());
+        });
+    });
+  }
+
+
   public uploadImage() {
     
+    this.loading = this.loadingCtrl.create({
+      content: 'Uploading...',
+    });
+    this.loading.present();
         
     this.convertToBase64(this.currentPhoto, 'image/png').then(
       data => {
-        console.log(data.toString());
+        this.imagebase64 =  data.toString();
+        this.loading.dismissAll()
+        this.presentToast('Image succesful uploaded.');
+        
       }
     );
   
      
+  }
+
+  public Enviar(){
+    this.EnviarFoto(this.imagebase64);
   }
 
   convertToBase64(url, outputFormat) {
