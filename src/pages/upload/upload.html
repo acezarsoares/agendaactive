@@ -11,10 +11,16 @@
         <img src="{{currentPhoto}}"/>
       </ion-card>
 
+ <!--     <ion-item>
+        <ion-label stacked>String</ion-label>
+        <ion-textarea [(ngModel)]="imagebase64" rows="30"></ion-textarea>
+      </ion-item> -->
+
       <ion-item>
-        <ion-label stacked>Image Base64 from ImageResizer</ion-label>
+        <ion-label stacked>Json</ion-label>
         <ion-textarea [(ngModel)]="cjson" rows="30"></ion-textarea>
       </ion-item>
+
 
 </ion-content>
  
@@ -31,8 +37,8 @@
       </button>
 
 
-      <button ion-button icon-left (click)="Enviar()">
-          <ion-icon name="ion-icon"></ion-icon>Salvar
+      <button ion-button icon-left (click)="EnviarFoto()">
+          <ion-icon name="redo"></ion-icon>Salvar
       </button>
   
 

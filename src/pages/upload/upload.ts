@@ -8,8 +8,9 @@ import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera, CameraOptions} from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import{ Http, Response } from '@angular/http';
+import{ Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+
 
 const urlt = 'http://18.216.118.169/api.activesoft.com.br/api.dll/V1/rest/TAgendaEscolar_V1/SendFile';
 
@@ -133,45 +134,49 @@ public pathForImage(img) {
 
 
 
-  EnviarFoto(base64){
-    this.cjson = JSON.stringify(base64)
-    return new Promise((resolve, reject) => {     
-      this.http.post(urlt, this.cjson)
-        .subscribe((res: any) => {
-          resolve(res.json());
-        },
-        (err) => {
-          reject(err.json());
-        });
+  public EnviarFoto(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Enviando...',
     });
+    this.loading.present();
+    let headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    let options = new RequestOptions({ headers: Headers });
+
+    this.cjson = '{"Arquivo":{"' + this.imagebase64 + '"}';
+    console.log(this.cjson );
+
+      this.http.post(urlt,this.cjson,options)
+        .subscribe( res => {
+          return res
+        })
   }
 
 
   public uploadImage() {
-    
+
     this.loading = this.loadingCtrl.create({
-      content: 'Uploading...',
+      content: 'Convertendo...',
     });
     this.loading.present();
-        
+
+    
     this.convertToBase64(this.currentPhoto, 'image/png').then(
       data => {
         this.imagebase64 =  data.toString();
         this.loading.dismissAll()
         this.presentToast('Image succesful uploaded.');
-        
       }
     );
-  
-     
   }
 
-  public Enviar(){
-    this.EnviarFoto(this.imagebase64);
-  }
 
   convertToBase64(url, outputFormat) {
+
+        
     return new Promise((resolve, reject) => {
+
       let img = new Image();
       img.crossOrigin = 'Anonymous';
       img.onload = function () {
