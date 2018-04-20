@@ -36,6 +36,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 
+import { HTTP } from '@ionic-native/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -91,7 +93,8 @@ import { Camera } from '@ionic-native/camera';
     FileTransfer,
     FileTransferObject,
     File,
-    Camera
+    Camera,
+    HTTP
   ]
 })
 export class AppModule {}
